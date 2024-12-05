@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface Todo {
   id: string;
@@ -20,7 +21,8 @@ interface TodoTableProps {
 }
 
 const TodoTable: React.FC<TodoTableProps> = ({ todos, isLoading, onEdit, onDelete }) => {
-  
+  const session = useSession()
+  console.log("Session:", session);
   const router = useRouter();
   const handleView = (id: string) => {
     router.push(`/todo/${id}`);
@@ -98,6 +100,8 @@ const TodoTable: React.FC<TodoTableProps> = ({ todos, isLoading, onEdit, onDelet
         ))}
       </tbody>
     </table>
+
+    
   );
 };
 

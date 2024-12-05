@@ -46,10 +46,10 @@ export default function Signup() {
           alert("User has been registered successfully");
           router.push("/signin");
         },
-        onError: (error: any) => {
+        onError: (error: unknown) => {
           console.error("Error in mutation:", error);
           alert(
-            error.response?.data?.message || "Failed to sign up. Please try again."
+            (error as any).response?.data?.message || "Failed to sign up. Please try again."
           );
         },
       });

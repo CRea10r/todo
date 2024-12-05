@@ -44,13 +44,13 @@ export const { handlers, auth, signOut, signIn } = NextAuth(
             }
           }
 
-          catch (error: any) {
-            if (error.networkError) 
+          catch (error: unknown) {
+            if ( (error as any).networkError) 
               {
-              console.error("Network error:", error.networkError);
+              console.error("Network error:",  (error as any).networkError);
             } 
-            else if (error.graphQLErrors) {
-              console.error("GraphQL errors:", error.graphQLErrors);
+            else if ( (error as any).graphQLErrors) {
+              console.error("GraphQL errors:",  (error as any).graphQLErrors);
             } 
             else {
               console.error("Unexpected error:", error);

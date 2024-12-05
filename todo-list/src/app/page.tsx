@@ -35,7 +35,7 @@ export default function Home() {
   });
 
   // Create Todo Mutation
-  const { mutate: createTodo, status: createTodoLoading } = useMutation({
+  const { mutate: createTodo } = useMutation({
     mutationFn: ({ todo, description, authorId }: Omit<Todo, "id" | "isPending">) =>
       CreateTodo(todo, description, authorId),
     onSuccess: () => {
@@ -49,7 +49,7 @@ export default function Home() {
   });
 
   // Update Todo Mutation
-  const { mutate: updateTodo, status: updateTodoLoading } = useMutation({
+  const { mutate: updateTodo} = useMutation({
     mutationFn: ({ id, todo, description, isPending }: Todo) =>
       UpdateTodo(id, todo, description, isPending),
     onSuccess: () => {
@@ -64,7 +64,7 @@ export default function Home() {
   });
 
   // Delete Todo Mutation
-  const { mutate: deleteTodo, status: deleteTodoLoading } = useMutation({
+  const { mutate: deleteTodo } = useMutation({
     mutationFn: (id: string) =>
       DeleteTodo(id),
     onSuccess: () => refetch(),

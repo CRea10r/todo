@@ -19,7 +19,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 
-export default function signin() {
+export default function Signin() {
     const router = useRouter();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
